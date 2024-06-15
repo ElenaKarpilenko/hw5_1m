@@ -2,14 +2,31 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Boss boss = new Boss();
+        boss.setDamage(50);
+        boss.setHealth(700);
+        System.out.println("Информация о Боссе");
+        boss.setProtection("Нож");
+        System.out.println("Урон Боса: " + boss.getDamage() + ".");
+        System.out.println("Жизнь босса: " + boss.getHealth() + ".");
+        System.out.println("Тип защиты: " + boss.getProtection() + ".");
+        System.out.println("--------------");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Hero[] heroes = createHeroes();
+        for (Hero hero: heroes){
+            System.out.println("жизнь героя: " + hero.getHealth());
+            System.out.println("уроны героя: " + hero.getDamage());
+            System.out.println("суппер способности героя: " + hero.getSuperPower());
         }
+
+    }
+
+    public static Hero[] createHeroes() {
+        Hero doctor = new Hero(500, "реанимирование", 20);
+        Hero mag = new Hero(400, "магия", 50);
+        Hero dragon = new Hero("испепеление", 70);
+        return new Hero[]{doctor, mag, dragon};
+
+
     }
 }
